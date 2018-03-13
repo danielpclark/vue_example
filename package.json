@@ -1,0 +1,17 @@
+{
+  "name": "vue_example",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "^3.3.1",
+    "coffee-loader": "^0.9.0",
+    "coffeescript": "1.12.7",
+    "vue": "^2.5.15",
+    "vue-loader": "^14.2.1",
+    "vue-resource": "^1.5.0",
+    "vue-template-compiler": "^2.5.15",
+    "vue-turbolinks": "^2.0.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
+  }
+}
