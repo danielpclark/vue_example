@@ -1,19 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Subject:</strong>
-  <%= @document.subject %>
-</p>
+<% content_for :head do -%>
+  <%= javascript_pack_tag 'documents' %>
+<% end -%>
 
-<p>
-  <strong>Body:</strong>
-  <%= @document.body %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @document.state %>
-</p>
+<div id="vue-app">
+  <show-document
+    v-bind:document="<%= @document.to_json(except: [:created_at, :updated_at]) %>"
+  >
+  </show-document>
+</div>
 
 <%= link_to 'Edit', edit_document_path(@document) %> |
 <%= link_to 'Back', documents_path %>
