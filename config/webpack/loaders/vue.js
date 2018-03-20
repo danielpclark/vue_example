@@ -4,10 +4,17 @@ const isProduction = process.env.NODE_ENV === 'production'
 const inDevServer = process.argv.find(v => v.includes('webpack-dev-server'))
 const extractCSS = !(inDevServer && (devServer && devServer.hmr)) || isProduction
 
-module.exports = {
+module.exports = { 
   test: /\.vue(\.erb)?$/,
   use: [{
     loader: 'vue-loader',
     options: { extractCSS }
+  },  
+  {
+    loader: 'rails-erb-loader',
+    options: {
+      runner: 'bin/rails runner',
+      dependenciesRoot: '../app'
+    }
   }]
 }

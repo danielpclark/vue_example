@@ -1,0 +1,56 @@
+<% include ActionView::Helpers::FormOptionsHelper %>
+
+<template>
+  <div>
+    <label>Subject</label>
+    <input type="text" v-model="document.subject" />
+
+    <label>State</label>
+    <select v-model="document.state">
+      <%= options_for_select(Document.states.keys, "concept") %>
+    </select>
+
+    <label>Body</label>
+    <textarea v-model="document.body"></textarea>
+
+    <br />
+
+    <button v-on:click="Submit">Submit</button>
+  </div>
+</template>
+
+<script lang="coffee">
+export default
+  props:
+    document:
+      type: Object
+      required: true
+  methods: Submit: ->
+    ourDocument = @_props.document
+    if ourDocument.id?
+      @$http # New action
+        .post '/documents', document: @document
+        .then (response) ->
+            Turbolinks.visit "/documents/#{response.body.id}"
+            return
+          (response) ->
+            @errors = response.data.errors
+            return
+    else
+      @$http # Edit action
+        .put "/documents/#{document.id}", document: @document
+        .then (response) ->
+            Turbolinks.visit "/documents/#{response.body.id}"
+            return
+          (response) ->
+            @errors = response.data.errors
+            return
+    return
+</script>
+
+<style scoped>
+  textarea {
+    rows: 20;
+    cols: 60;
+  }
+</style>

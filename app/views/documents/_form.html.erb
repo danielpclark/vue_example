@@ -2,26 +2,9 @@
   <%= javascript_pack_tag 'documents' %>
 <% end -%>
 
-<%= content_tag :div,
-  id: "document-form",
-  data: {
-    document: document.to_json(except: [:created_at, :updated_at])
-  } do %>
-
-  <label>Subject</label>
-  <input type="text" v-model="document.subject" />
-
-  <label>State</label>
-  <select v-model="document.state">
-    <%= options_for_select(Document.states.keys, "concept") %>
-  </select>
-
-  <label>Body</label>
-  <textarea v-model="document.body" rows="20" cols="60"></textarea>
-
-  <br />
-
-  <button v-on:click="Submit">Submit</button>
-
-<% end %>
-
+<div id="vue-app">
+  <form-document
+    v-bind:document="<%= document.to_json(except: [:created_at, :updated_at]) %>"
+  >
+  </form-document>
+</div>
