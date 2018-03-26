@@ -15,7 +15,7 @@ class DocumentsTest < ApplicationSystemTestCase
     click_on "New Document"
 
     fill_in "Body", with: @document.body
-    fill_in "State", with: @document.state
+    select @document.state, from: "State"
     fill_in "Subject", with: @document.subject
     click_on "Create Document"
 
@@ -28,7 +28,7 @@ class DocumentsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Body", with: @document.body
-    fill_in "State", with: @document.state
+    select @document.state, from: "State"
     fill_in "Subject", with: @document.subject
     click_on "Update Document"
 
