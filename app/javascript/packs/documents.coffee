@@ -10,7 +10,7 @@ Vue.use(TurbolinksAdapter)
 Vue.component('form-document', FormDocument)
 Vue.component('show-document', ShowDocument)
 
-document.addEventListener('turbolinks:load', () ->
+document.addEventListener('turbolinks:load', ->
   Vue.http.headers.common['X-CSRF-Token'] = document
     .querySelector('meta[name="csrf-token"]')
     .getAttribute('content')
@@ -22,3 +22,5 @@ document.addEventListener('turbolinks:load', () ->
       el: element
     )
 )
+
+Turbolinks.dispatch("turbolinks:load")
