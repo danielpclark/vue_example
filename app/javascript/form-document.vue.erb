@@ -27,7 +27,7 @@ export default
       required: true
   methods: Submit: ->
     ourDocument = @_props.document
-    if ourDocument.id?
+    if ourDocument.id == null
       @$http # New action
         .post '/documents', document: @document
         .then (response) ->
