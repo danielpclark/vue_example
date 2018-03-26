@@ -38,7 +38,7 @@ export default
             return
     else
       @$http # Edit action
-        .put "/documents/#{document.id}", document: @document
+        .put "/documents/#{@document.id}", document: @document
         .then (response) ->
             Turbolinks.visit "/documents/#{response.body.id}"
             return
