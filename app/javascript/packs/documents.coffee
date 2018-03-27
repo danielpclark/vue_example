@@ -11,15 +11,13 @@ Vue.component('form-document', FormDocument)
 Vue.component('show-document', ShowDocument)
 
 document.addEventListener('turbolinks:load', ->
-  Vue.http.headers.common['X-CSRF-Token'] = document
-    .querySelector('meta[name="csrf-token"]')
-    .getAttribute('content')
-
   element = document.getElementById 'vue-app'
 
   if element?
     app = new Vue(
       el: element
+      data:
+        csrfToken: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     )
 )
 

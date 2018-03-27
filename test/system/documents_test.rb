@@ -14,10 +14,10 @@ class DocumentsTest < ApplicationSystemTestCase
     visit documents_url
     click_on "New Document"
 
-    fill_in "Body", with: @document.body
-    select @document.state, from: "State"
     fill_in "Subject", with: @document.subject
-    click_on "Create Document"
+    select @document.state, from: "State"
+    fill_in "Body", with: @document.body
+    click_on "Submit"
 
     assert_text "Document was successfully created"
     click_on "Back"
@@ -27,10 +27,10 @@ class DocumentsTest < ApplicationSystemTestCase
     visit documents_url
     click_on "Edit", match: :first
 
-    fill_in "Body", with: @document.body
-    select @document.state, from: "State"
     fill_in "Subject", with: @document.subject
-    click_on "Update Document"
+    select @document.state, from: "State"
+    fill_in "Body", with: @document.body
+    click_on "Submit"
 
     assert_text "Document was successfully updated"
     click_on "Back"

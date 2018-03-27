@@ -5,6 +5,7 @@
 <div id="vue-app">
   <form-document
     v-bind:document="<%= document.to_json(except: [:created_at, :updated_at]) %>"
+    v-bind:authenticity-token="csrfToken"
   >
   </form-document>
 </div>
