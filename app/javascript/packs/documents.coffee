@@ -20,5 +20,8 @@ document.addEventListener('turbolinks:load', ->
         csrfToken: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     )
 )
+ 
+if !Turbolinks?
+  location.reload
 
 Turbolinks.dispatch("turbolinks:load")
