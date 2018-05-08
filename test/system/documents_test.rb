@@ -17,7 +17,7 @@ class DocumentsTest < ApplicationSystemTestCase
     fill_in "Body", with: @document.body
     select @document.state, from: "State"
     fill_in "Subject", with: @document.subject
-    click_on "Create Document"
+    click_on "Submit"
 
     assert_text "Document was successfully created"
     click_on "Back"
@@ -30,7 +30,7 @@ class DocumentsTest < ApplicationSystemTestCase
     fill_in "Body", with: @document.body
     select @document.state, from: "State"
     fill_in "Subject", with: @document.subject
-    click_on "Update Document"
+    click_on "Submit"
 
     assert_text "Document was successfully updated"
     click_on "Back"

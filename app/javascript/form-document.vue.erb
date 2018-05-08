@@ -2,16 +2,16 @@
 
 <template>
   <div>
-    <label>Subject</label>
-    <input type="text" v-model="document.subject" />
+    <label for="document_subject">Subject</label>
+    <input id="document_subject" type="text" v-model="document.subject" />
 
-    <label>State</label>
-    <select v-model="document.state">
+    <label for="document_state">State</label>
+    <select id="document_state" v-model="document.state">
       <%= options_for_select(Document.states.keys, "concept") %>
     </select>
 
-    <label>Body</label>
-    <textarea v-model="document.body"></textarea>
+    <label for="document_body">Body</label>
+    <textarea id="document_body" v-model="document.body"></textarea>
 
     <br />
 
